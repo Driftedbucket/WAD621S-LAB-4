@@ -157,3 +157,13 @@ th {
 td:hover {
     background-color: var(--bg-color);
 }
+
+@media (max-width: 600px) {
+    #cardsContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 90%;
+    }
+}
