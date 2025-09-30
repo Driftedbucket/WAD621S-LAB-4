@@ -3,6 +3,33 @@ const cardsContainer = document.getElementById("cardsContainer");
 const tableBody = document.querySelector("#summaryTable tbody");
 const toggleThemeBtn = document.getElementById("toggleTheme");
 
+
+let editingCard = null;
+
+// Load profiles from LocalStorage on page load
+let profiles = JSON.parse(localStorage.getItem("profiles")) || [];
+profiles.forEach(profile => createProfile(profile, false));
+
+// Dark Mode Toggle
+toggleThemeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+});
+// Validate Email
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+// Clear errors
+function clearErrors(form) {
+    const errors = form.querySelectorAll(".error");
+    errors.forEach(e => e.textContent = "");
+}
+
+// Save profiles to LocalStorage
+function saveProfiles() {
+    localStorage.setItem("profiles", JSON.stringify(profiles));
+}
+
 // Create or update profile card and table row
 function createProfile(data, save = true) {
     let card, row;
