@@ -1,0 +1,33 @@
+/* VARIABLES */
+:root {
+    --primary-color: #3b82f6; /* blue-ish */
+    --secondary-color: #f59e0b; /* amber */
+    --bg-color: #e5e7eb; /* light gray */
+    --card-bg: #fef3c7; /* soft cream */
+    --text-color: #111827;
+    --transition-time: 0.3s;
+}
+
+/* DARK MODE VARIABLES */
+body.dark-mode {
+    --bg-color: #1f2937;
+    --card-bg: #111827;
+    --text-color: #f9fafb;
+    --primary-color: #6366f1;
+    --secondary-color: #fbbf24;
+}
+
+/* BASIC RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Bitcount Prop Double Ink", system-ui;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 20px;
+    transition: background-color var(--transition-time), color var(--transition-time);
+}
