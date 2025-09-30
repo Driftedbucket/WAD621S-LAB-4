@@ -118,3 +118,46 @@ function createProfile(data, save = true) {
         row.querySelector(".editBtn").addEventListener("click", editHandler);
     }
 }
+
+// Form submit
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    clearErrors(form);
+
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const programme = document.getElementById("programme").value.trim();
+    const year = document.getElementById("year").value;
+    const interests = document.getElementById("interests").value.trim();
+    const photo = document.getElementById("photo").value.trim();
+
+    let valid = true;
+
+    if(!firstName) {
+        document.querySelector("#firstName + .error").textContent = "First name required";
+        valid = false;
+    }
+    if(!lastName) {
+        document.querySelector("#lastName + .error").textContent = "Last name required";
+        valid = false;
+    }
+    if(!email || !validateEmail(email)) {
+        document.querySelector("#email + .error").textContent = "Valid email required";
+        valid = false;
+    }
+    if(!programme) {
+        document.querySelector("#programme + .error").textContent = "Programme required";
+        valid = false;
+    }
+    if(!year) {
+        document.querySelector("#year + .error").textContent = "Year required";
+        valid = false;
+    }
+
+    if(valid) {
+        createProfile({firstName, lastName, email, programme, year, interests, photo});
+        form.reset();
+    }
+});
+
